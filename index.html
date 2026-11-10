@@ -5,11 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Page</title>
 
+  <!-- 從 Google Fonts 載入霞鶩文楷 TC（免費字體） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     /* ===== 整體設定 ===== */
     body {
       margin: 0;
-      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      font-family: "LXGW WenKai TC", "HanziPen TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
       background-color: #f5f5f7;
       color: #333;
       line-height: 1.6;
@@ -26,19 +31,50 @@
       margin-top: 24px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
+    /* ===== 頭像在左、名字在右 ===== */
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: white;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
     h1 {
-      text-align: center;
-      margin: 0 0 8px;
+      margin: 0 0 6px;
     }
     .subtitle {
-      text-align: center;
       color: #777;
       margin: 0;
     }
+    /* 手機上螢幕太窄時改成上下排 */
+    @media (max-width: 500px) {
+      .profile { flex-direction: column; text-align: center; }
+    }
+
+    /* ===== 小標籤 ===== */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tag {
+      background: #eef3fc;
+      color: #335;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 15px;
+    }
     h2 {
       margin-top: 0;
-      border-left: 5px solid #4a7bd0;
-      padding-left: 10px;
     }
     a { color: #4a7bd0; }
 
@@ -110,14 +146,38 @@
 <body>
   <div class="container">
 
-    <!-- ===== 最上方標題（可自由改） ===== -->
-    <header>
-      <h1>Hello!</h1>
-      <p class="subtitle">Physics @ NTU ・ Astrophysics ・ Collector</p>
+    <!-- ===== 頭像 + 名字 ===== -->
+    <header class="profile">
+      <img class="avatar" src="images/avatar.jpg" alt="頭像">
+      <div>
+        <h1>你的名字</h1>
+        <p class="subtitle">一句話介紹，例如：台大物理 ・ 天文 ・ 收集周邊中</p>
+      </div>
     </header>
 
+    <!-- ===== 自我介紹 ===== -->
+    <section>
+      <h2>自我介紹</h2>
+      <p>在這裡寫簡單的自我介紹，幾句話就好。</p>
+    </section>
+
+    <!-- ===== 喜歡的東西 ===== -->
+    <section>
+      <h2>我喜歡的東西</h2>
+      <p>在這裡寫你喜歡的東西，例如攝影、鉤織、遊戲、天文……</p>
+    </section>
+
+    <!-- ===== 雷點 ===== -->
+    <section>
+      <h2>可能會雷到我的東西</h2>
+      <ul>
+        <li>雷點 1</li>
+        <li>雷點 2</li>
+      </ul>
+    </section>
+
     <!-- =====================================================
-         周邊展示
+         拍拍（周邊照片）
          每一個 <div class="item"> 是一張卡片
          想多放就複製一整段 <div class="item"> ... </div>
          ===================================================== -->
@@ -148,11 +208,21 @@
       </div>
     </section>
 
+    <!-- ===== 可以跟我聊什麼 ===== -->
+    <section>
+      <h2>可以跟我聊什麼</h2>
+      <div class="tags">
+        <span class="tag">天文 / 模擬</span>
+        <span class="tag">話題 2</span>
+        <span class="tag">話題 3</span>
+      </div>
+    </section>
+
     <!-- =====================================================
          簡歷
          ===================================================== -->
     <section class="cv">
-      <h2>CV</h2>
+      <h2>研究用 CV</h2>
 
       <!-- ---------- Education ---------- -->
       <h3>Education</h3>
