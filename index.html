@@ -3,80 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yuzi 的個人網站</title>
+  <title>My Page</title>
 
   <style>
     /* ===== 整體設定 ===== */
     body {
       margin: 0;
       font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      background-color: #f5f5f7;   /* 背景色 */
-      color: #333;                 /* 文字顏色 */
-      line-height: 1.7;
+      background-color: #f5f5f7;
+      color: #333;
+      line-height: 1.6;
     }
-
-    /* 讓內容置中、限制最大寬度 */
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 40px 20px;
     }
-
-    /* ===== 最上方的頭像與名字 ===== */
-    header {
-      text-align: center;
-    }
-    .avatar {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;          /* 變成圓形 */
-      object-fit: cover;
-      border: 4px solid white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-    }
-    h1 {
-      margin: 16px 0 4px;
-    }
-    .subtitle {
-      color: #777;
-      margin: 0;
-    }
-
-    /* ===== 每個區塊（卡片） ===== */
     section {
       background: white;
       border-radius: 12px;
-      padding: 24px;
+      padding: 28px;
       margin-top: 24px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
+    h1 {
+      text-align: center;
+      margin: 0 0 8px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin: 0;
+    }
     h2 {
       margin-top: 0;
-      border-left: 5px solid #4a7bd0;   /* 標題左邊的色條 */
+      border-left: 5px solid #4a7bd0;
       padding-left: 10px;
     }
+    a { color: #4a7bd0; }
 
-    /* ===== 圖片 ===== */
-    .photo {
-      width: 100%;
-      border-radius: 8px;
-    }
-    /* 多張圖片並排 */
+    /* ===== 周邊展示（上半部） ===== */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 12px;
+      gap: 16px;
     }
-    .gallery img {
+    .item {
+      background: #fafafa;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .item img {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
+      height: 220px;
+      object-fit: cover;        /* 圖片裁切填滿，不變形 */
+      display: block;
+    }
+    .item p {
+      margin: 0;
+      padding: 8px 12px;
+      font-size: 14px;
     }
 
-    /* ===== 連結 ===== */
-    a {
-      color: #4a7bd0;
+    /* ===== 簡歷（下半部） ===== */
+    .cv h3 {
+      font-size: 18px;
+      margin: 28px 0 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #ddd;
+      font-variant: small-caps;
+      letter-spacing: 0.5px;
+    }
+    .cv h3:first-of-type { margin-top: 8px; }
+
+    /* 左邊標題、右邊日期 */
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .entry { margin-bottom: 16px; }
+    .org   { font-weight: bold; }
+    .sub   { font-style: italic; font-size: 14px; color: #555; }
+    .date  { font-size: 14px; color: #777; white-space: nowrap; }
+    .cv ul { margin: 6px 0 0; padding-left: 20px; font-size: 15px; }
+    .cv li { margin-bottom: 4px; }
+
+    /* 課程成績表 */
+    .grades li {
+      display: flex;
+      justify-content: space-between;
+      max-width: 420px;
     }
 
     footer {
@@ -91,54 +110,220 @@
 <body>
   <div class="container">
 
-    <!-- ===== 頭像與名字 ===== -->
+    <!-- ===== 最上方標題（可自由改） ===== -->
     <header>
-      <!-- 把 images/avatar.jpg 換成你自己的圖片路徑 -->
-      <img class="avatar" src="images/avatar.jpg" alt="我的頭像">
-      <h1>Yuzi</h1>
-      <p class="subtitle">物理系學生 ・ 喜歡天文</p>
+      <h1>Hello!</h1>
+      <p class="subtitle">Physics @ NTU ・ Astrophysics ・ Collector</p>
     </header>
 
-    <!-- ===== 自我介紹 ===== -->
+    <!-- =====================================================
+         周邊展示
+         每一個 <div class="item"> 是一張卡片
+         想多放就複製一整段 <div class="item"> ... </div>
+         ===================================================== -->
     <section>
-      <h2>關於我</h2>
-      <p>
-        嗨！這裡寫你的自我介紹。
-        想換行就再開一個 &lt;p&gt; 段落。
-      </p>
-      <p>這是第二段文字。</p>
-    </section>
-
-    <!-- ===== 單張大圖 ===== -->
-    <section>
-      <h2>一張圖片</h2>
-      <img class="photo" src="images/photo1.jpg" alt="圖片說明">
-      <p>可以在圖片下面寫說明文字。</p>
-    </section>
-
-    <!-- ===== 多張圖片並排 ===== -->
-    <section>
-      <h2>相簿</h2>
+      <h2>拍拍</h2>
       <div class="gallery">
-        <img src="images/photo2.jpg" alt="">
-        <img src="images/photo3.jpg" alt="">
-        <img src="images/photo4.jpg" alt="">
-        <!-- 想多放幾張就複製上面那一行 -->
+
+        <div class="item">
+          <img src="images/goods1.jpg" alt="周邊 1">
+          <p>周邊說明 1</p>
+        </div>
+
+        <div class="item">
+          <img src="images/goods2.jpg" alt="周邊 2">
+          <p>周邊說明 2</p>
+        </div>
+
+        <div class="item">
+          <img src="images/goods3.jpg" alt="周邊 3">
+          <p>周邊說明 3</p>
+        </div>
+
+        <div class="item">
+          <img src="images/goods4.jpg" alt="周邊 4">
+          <p>周邊說明 4</p>
+        </div>
+
       </div>
     </section>
 
-    <!-- ===== 清單與連結 ===== -->
-    <section>
-      <h2>聯絡我</h2>
+    <!-- =====================================================
+         簡歷
+         ===================================================== -->
+    <section class="cv">
+      <h2>CV</h2>
+
+      <!-- ---------- Education ---------- -->
+      <h3>Education</h3>
+      <div class="entry">
+        <div class="row">
+          <span class="org">National Taiwan University</span>
+          <span class="date">Taipei, Taiwan</span>
+        </div>
+        <div class="row">
+          <span class="sub">Undergraduate in Department of Physics</span>
+          <span class="date">Sep. 2023 – Jun. 2027 (Expected)</span>
+        </div>
+        <div class="row">
+          <span class="sub">Minor in Department of Life Science</span>
+          <span class="date">Sep. 2025 – Jun. 2027 (Expected)</span>
+        </div>
+
+        <p style="margin: 12px 0 4px; font-size: 15px;">Graduate level courses</p>
+        <ul class="grades">
+          <li><span>Computational Astrophysics</span><span>A+</span></li>
+          <li><span>Diffuse Interstellar Medium</span><span>A</span></li>
+          <li><span>Advanced Observational Astronomy</span><span>A+</span></li>
+          <li><span>Nuclear Astrophysics</span><span>A</span></li>
+          <li><span>Galactic Astrophysics</span><span>A+</span></li>
+          <li><span>Particle Astrophysics</span><span>A+</span></li>
+        </ul>
+        <p style="font-size: 15px;">Astrophysics GPA: 4.0 / 4.0 (2023 Fall – 2026 Spring)</p>
+      </div>
+
+      <!-- ---------- Research Experience ---------- -->
+      <h3>Research Experience</h3>
+
+      <div class="entry">
+        <div class="row">
+          <span class="org">Pusan National University, Department of Earth Science Education</span>
+          <span class="date">Feb. 2026 – Present</span>
+        </div>
+        <div class="row">
+          <span class="sub">Advisor: Junsup Shim</span>
+          <span class="date">ASIAA, PNU</span>
+        </div>
+        <div class="sub" style="margin-top: 6px;">Investigate the Parity Symmetry Through Galaxy Spin Velocity and Angular Momentum</div>
+        <ul>
+          <li>Utilizing N-body simulations to analyze the potential of using late-time halo spin velocity and angular momentum inner product to test parity symmetry of primordial vector fossils.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
+          <span class="org">National Taiwan University, Institute of Astronomy</span>
+          <span class="date">Sep. 2024 – Present</span>
+        </div>
+        <div class="row">
+          <span class="sub">Advisor: Chia-Yu Hu</span>
+          <span class="date">NTU</span>
+        </div>
+
+        <div class="row" style="margin-top: 6px;">
+          <span class="sub">X<sub>CO</sub> in Galactic Outflows with/without local thermal equilibrium radiative transfer</span>
+          <span class="date">Sep. 2025 – Present</span>
+        </div>
+        <ul>
+          <li>Perform high-resolution GIZMO simulations of a cold cloud propagating through a hot, radiatively cooling medium to investigate molecular gas formation in galactic outflows. On-the-fly chemistry and post-processed radiative transfer calculations yield CO abundances and CO(1–0) intensities to derive environment-dependent X<sub>CO</sub> factors, improving gas mass estimates in galactic outflows.</li>
+        </ul>
+
+        <div class="row" style="margin-top: 6px;">
+          <span class="sub">The Effect of Dust Evolution on the Multi-phase Interstellar Medium</span>
+          <span class="date">Sep. 2024 – Sep. 2025</span>
+        </div>
+        <ul>
+          <li>Using hydrodynamic simulation code GIZMO to investigate how photoionization feedback affects the dust evolution in the Interstellar Medium (ISM) within or without clumpy medium. Then includes stellar wind into the simulation, making an idealized supernova explosion in order to study the dust evolution with these stellar feedbacks.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
+          <span class="org">Academia Sinica, Institute of Astronomy and Astrophysics</span>
+          <span class="date">Jul. 2025 – Jul. 2026</span>
+        </div>
+        <div class="row">
+          <span class="sub">Advisor: Ting-Wen Lan</span>
+          <span class="date">ASIAA, NTU</span>
+        </div>
+        <div class="sub" style="margin-top: 6px;">Mg II Emission Line Galaxies in DESI</div>
+        <ul>
+          <li>Analyze DESI EDR/DR1 spectra to identify Mg II λ2796, λ2803 emitters using double-Gaussian fitting, and compare their emission properties with LyC-leaker diagnostics to study possible tracers of ionizing photon escape.</li>
+        </ul>
+      </div>
+
+      <!-- ---------- Research Interests ---------- -->
+      <h3>Research Interests</h3>
       <ul>
-        <li>GitHub：<a href="https://github.com/你的帳號">github.com/你的帳號</a></li>
-        <li>Email：your@email.com</li>
+        <li><b>Hydrodynamical Simulations</b> — Modeling ISM chemistry, radiative transfer to characterize the galaxy outflow with stellar feedback conditions.</li>
+        <li><b>Cosmological Simulations</b> — Investigating the parity symmetry of the Universe.</li>
+        <li><b>Big Data Analysis</b> — Utilizing <b>DESI</b> and <b>GALEX</b> to investigate how MgII emitters trace LyC leakage related to the reionization epoch.</li>
       </ul>
+
+      <!-- ---------- Conference Presentations ---------- -->
+      <h3>Conference Presentations</h3>
+
+      <div class="entry">
+        <div class="org">Oral Presenter</div>
+        <div class="row">
+          <span class="sub">ASIAA Summer Student Program Seminar — The MgII Emitters in DESI</span>
+          <span class="date">Aug. 2025</span>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="org">Poster Presenter</div>
+        <div class="row">
+          <span class="sub">2026 Annual Meeting of the Astronomical Society of the Republic of China — CO-to-H<sub>2</sub> Conversion Factor in Galactic Outflows</span>
+          <span class="date">May 2026</span>
+        </div>
+        <div class="row">
+          <span class="sub">2026 Annual Meeting of the Physical Society of Taiwan — CO-to-H<sub>2</sub> Conversion Factor in Galactic Outflows with Post-Processing Chemistry and Radiative Cooling</span>
+          <span class="date">Jan. 2026</span>
+        </div>
+        <div class="row">
+          <span class="sub">2025 Annual Meeting of the Astronomical Society of the Republic of China — The Effect of Dust Evolution on the Multi-phase Interstellar Medium</span>
+          <span class="date">May 2025</span>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="org">Participant</div>
+        <div class="row">
+          <span class="sub">CL2025: Entering a Golden Age of Galaxy Cluster Studies</span>
+          <span class="date">Sep. 2025</span>
+        </div>
+        <div class="row">
+          <span class="sub">Opening Symposium: Max Planck–IAS–NTU Center</span>
+          <span class="date">Sep. 2025</span>
+        </div>
+        <div class="row">
+          <span class="sub">10th Galaxy Evolution Workshop</span>
+          <span class="date">Aug. 2024</span>
+        </div>
+      </div>
+
+      <!-- ---------- Campus Activities ---------- -->
+      <h3>Campus Activities</h3>
+      <div class="entry">
+        <div class="row">
+          <span class="org">Astronomy Club, NTU</span>
+          <span class="date">Sep. 2024 – Sep. 2025</span>
+        </div>
+        <div class="sub">Secretary</div>
+      </div>
+
+      <!-- ---------- Awards ---------- -->
+      <h3>Awards and Honors</h3>
+      <ul>
+        <li><b>National Taiwan University Undergraduate Research Assistant</b> (Sep. 2025 – Present)<br>Awarded to NTU undergraduates.</li>
+        <li><b>ASIAA Undergraduate Research Assistant</b> (Jun. 2025 – Aug. 2025)<br>Academia Sinica, Institute of Astronomy and Astrophysics, awarded to ASIAA summer students.</li>
+        <li><b>2025 NASA Hackathon SpaceApps Challenge</b><br>Local Silver Award (Kaohsiung); Global Championship Representative</li>
+      </ul>
+
+      <!-- ---------- Skills ---------- -->
+      <h3>Skills &amp; Interests</h3>
+      <ul>
+        <li><b>Skills:</b> Python, C, C++, Julia</li>
+        <li><b>Interests:</b> Photography, Crocheting, Gaming</li>
+      </ul>
+
+      <!-- ---------- Contact ---------- -->
+      <h3>Contact</h3>
+      <p><a href="mailto:b12501031@g.ntu.edu.tw">b12501031@g.ntu.edu.tw</a></p>
     </section>
 
-    <footer>
-      © 2026 Yuzi
-    </footer>
+    <footer>© 2026</footer>
 
   </div>
 </body>
