@@ -1,0 +1,82 @@
+body {
+  --soft-bg: color-mix(in srgb, var(--background-primary) 92%, black);
+}
+
+/* blockquote（>） */
+body .markdown-rendered blockquote,
+body .markdown-source-view.mod-cm6 .HyperMD-quote {
+  background: var(--soft-bg) !important;
+}
+
+/* inline code：編輯模式 */
+body .markdown-source-view.mod-cm6 .cm-inline-code {
+  background-color: var(--soft-bg) !important;
+  background-image: none !important;
+}
+
+/* inline code：閱讀模式（包含表格內） */
+html body .markdown-preview-view code,
+html body .markdown-preview-view p code,
+html body .markdown-preview-view td code,
+html body .markdown-preview-view li code {
+  background-color: var(--soft-bg) !important;
+  background-image: none !important;
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+}
+
+/* ``` 程式碼區塊不受影響 */
+html body .markdown-preview-view pre code {
+  background-color: transparent !important;
+  padding: 0;
+}
+
+/* 只作用在含有圖片的表格，Q22 的數據表格不受影響 */
+.markdown-rendered table:has(img),
+.markdown-rendered table:has(img) th,
+.markdown-rendered table:has(img) td,
+.markdown-rendered table:has(img) tr,
+.markdown-source-view.mod-cm6 .cm-table-widget table:has(img),
+.markdown-source-view.mod-cm6 .cm-table-widget table:has(img) th,
+.markdown-source-view.mod-cm6 .cm-table-widget table:has(img) td {
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+.markdown-rendered table:has(img) {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.markdown-rendered table:has(img) th,
+.markdown-rendered table:has(img) td {
+  text-align: center !important;
+  font-weight: normal;
+}
+.markdown-rendered table:has(img) img {
+  display: block;
+  margin: 0 auto;
+}
+
+@media print {
+  /* 圖片那一列不要被切開 */
+  table:has(img) tr,
+  table:has(img) td,
+  table:has(img) th,
+  table:has(img) img {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  /* 圖片列跟下面的說明列放在同一頁 */
+  table:has(img) tr:has(img) {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+  /* 避免單張圖比一頁還高 */
+  table:has(img) img {
+    max-height: 45vh;
+    width: auto !important;
+  }
+}
+  table:has(img) thead {
+    display: table-row-group !important;
+  }
